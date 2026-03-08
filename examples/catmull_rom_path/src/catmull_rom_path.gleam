@@ -1,5 +1,6 @@
 import gleam/float
 import gleam/time/duration
+import gleam_community/maths
 import lustre
 import lustre/attribute
 import lustre/effect
@@ -95,7 +96,11 @@ fn view(model: Model) -> element.Element(Msg) {
 
   let Vec2(x, z) = splines.sample(model.path, t_value(model.time))
   let object_position = vec3.Vec3(x:, y: 10.0, z:)
-  let y_rotation = vec2f.angle(positive_x, model.direction)
+  let y_rotation =
+    maths.atan2(
+      vec2f.cross(model.direction, positive_x),
+      vec2f.dot(positive_x, model.direction),
+    )
   let object_rotation = quaternion.from_euler(vec3.Vec3(0.0, y_rotation, 0.0))
   html.div(
     [

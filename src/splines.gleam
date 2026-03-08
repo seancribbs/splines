@@ -52,6 +52,10 @@ pub fn sample(spline: Spline(a, p), t: Float) -> p {
   }
 }
 
+/// A uniform cubic 2D B-Spline.
+pub type BSpline2D =
+  Spline(BSpline(Vec2f), Vec2f)
+
 /// Constructs a sequence of cubic B-spline curves in 2d.
 ///
 /// The list of points must be at least of length 4.
@@ -73,6 +77,10 @@ pub fn basis_2d(
   }
 }
 
+/// A uniform cubic 3D B-Spline.
+pub type BSpline3D =
+  Spline(BSpline(Vec3f), Vec3f)
+
 /// Constructs a sequence of cubic B-spline curves in 3d.
 ///
 /// The list of points must be at least of length 4.
@@ -93,6 +101,10 @@ pub fn basis_3d(
     }
   }
 }
+
+/// A uniform cubic 2D Beziér Spline.
+pub type Bezier2D =
+  Spline(bezier.Bezier(Vec2f), Vec2f)
 
 /// Constructs a sequence of cubic Beziér curves in 3d, where every segment has two
 /// control points and the curves are C0 continuous (share knots).
@@ -120,6 +132,10 @@ pub fn bezier_2d(
   }
 }
 
+/// A uniform cubic 3D Beziér Spline.
+pub type Bezier3D =
+  Spline(bezier.Bezier(Vec3f), Vec3f)
+
 /// Constructs a sequence of cubic Beziér curves in 3d, where every segment has two
 /// control points and the curves are C0 continuous (share knots).
 ///
@@ -146,6 +162,10 @@ pub fn bezier_3d(
   }
 }
 
+/// A uniform cubic 2D Catmull-Rom Spline.
+pub type CatmullRom2D =
+  Spline(CatmullRom(Vec2f), Vec2f)
+
 /// Constructs a sequence of Catmull-Rom curves in 2d, where the curve passes through all but the first and
 /// last points in the sequence.
 ///
@@ -167,6 +187,10 @@ pub fn catmull_rom_2d(
     }
   }
 }
+
+/// A uniform cubic 3D Catmull-Rom Spline.
+pub type CatmullRom3D =
+  Spline(CatmullRom(Vec3f), Vec3f)
 
 /// Constructs a sequence of Catmull-Rom curves in 3d, where the curve passes through all but the first and
 /// last points in the sequence.

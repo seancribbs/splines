@@ -25,6 +25,13 @@ pub type Spline(a, p) {
   // NonUniformSpline(curves: List(#(Float, a)), sample: fn(a, Float) -> p)
 }
 
+/// Returns the number of individual curves composing the spline.
+pub fn length(spline: Spline(a, p)) -> Int {
+  case spline {
+    UniformSpline(curves:, sample: _) -> list.length(curves)
+  }
+}
+
 /// Samples a generic spline at time `t`. How `t` gets applied to the contained
 /// curve definitions depends on whether the spline is uniform or not.
 pub fn sample(spline: Spline(a, p), t: Float) -> p {

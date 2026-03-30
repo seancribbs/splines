@@ -32,8 +32,24 @@ pub fn length(spline: Spline(a, p)) -> Int {
   }
 }
 
-/// Samples a generic spline at time `t`. How `t` gets applied to the contained
-/// curve definitions depends on whether the spline is uniform or not.
+/// Samples a generic spline at time `t`. The behavior of sampling
+/// depends on the number of component curves:
+///
+/// - If `0 <= t <= length(spline)`, the integer part of `t` is used to select
+///   the curve and then subtracted from `t` to scale it to within `[0,1]`.
+/// - If `t` is less than `0.0`, the first curve is sampled.
+/// - If `t` is greater than the number of curves, the last curve is sampled
+///   and `length(spline) - 1` is subtracted from `t` to scale for the last
+///   curve's offset.
+///
+/// **Example:**
+///
+/// Assume a spline `s` with three component curves (indexed `0`, `1`, `2`).
+/// - `sample(s, -0.75)` will sample curve `0` at `-0.75` (out-of-bounds before).
+/// - `sample(s, 0.33)` will sample curve `0` at `0.33`.
+/// - `sample(s, 1.2)` will sample curve `1` at `0.2`.
+/// - `sample(s, 2.5)` will sample curve `2` at `0.5`.
+/// - `sample(s, 3.79)` will sample curve `2` at `1.79` (out-of-bounds after).
 pub fn sample(spline: Spline(a, p), t: Float) -> p {
   case spline {
     UniformSpline(curves:, sample:) -> {

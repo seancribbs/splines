@@ -1,6 +1,6 @@
 //// Generalized linear interpolation
 ////
-//// Most splines use linear-interpolation ("lerp") in their calculations when sampling points from their curves.
+//// Some splines use linear-interpolation ("lerp") in their calculations when sampling points from their curves.
 //// This module generalizes lerp into multiple dimensions and provides example lerp functions for 1D, 2D, and 3D domains.
 
 import gleam/float

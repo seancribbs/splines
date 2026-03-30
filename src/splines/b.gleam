@@ -1,3 +1,10 @@
+//// B-splines
+////
+//// [B-splines](https://en.wikipedia.org/wiki/B-spline#) (short for basis splines)
+//// are useful most for the continuity of their derivatives, making them an excellent choice
+//// for camera and object movement where smoothness across knots is paramount but exact position is less
+//// important.
+
 import matrix/mat4f.{type Mat4f}
 import vec/vec2f.{type Vec2f}
 import vec/vec3f.{type Vec3f}

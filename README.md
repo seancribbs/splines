@@ -6,19 +6,20 @@ An implementation of popular parametric splines for use in graphics, simulations
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/splines/)
 
 ```sh
-gleam add splines@1
+gleam add splines
 ```
 ```gleam
-import splines/bezier
-import vec/vec2.{type Vec2}
+import splines
+import vec/vec2.{Vec2}
 
 pub fn main() -> Nil {
-  let quadratic_curve = bezier.new_2d([
+  let bezier = splines.bezier_2d([
     Vec2(0.0, 1.0),
-    Vec2(0.0, 0.0),
+    Vec2(0.0, 0.5),
+    Vec2(0.5, 0.0),
     Vec2(1.0, 0.0),
   ])
-  bezier.sample(quadratic_curve, 0.5) |> echo
+  splines.sample(bezier, 0.5) |> echo
 }
 ```
 

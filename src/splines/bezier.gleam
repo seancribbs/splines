@@ -71,7 +71,8 @@ pub fn new_3d(points: List(Vec3f)) -> Bezier(Vec3f) {
   }
 }
 
-/// Samples the Beziér spline at time `t` using the recursive [de Castlejau](https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm) algorithm.
+/// Samples the Beziér spline at time `t` using the recursive [de Castlejau](https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm) algorithm,
+/// or the matrix-multiplication form if it is the `CubicBezier` variant.
 ///
 /// Panics if the curve contains no points.
 pub fn sample(b: Bezier(a), t: Float) -> a {

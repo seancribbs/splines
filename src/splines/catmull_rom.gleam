@@ -1,8 +1,9 @@
 //// Centripetal Catmull-Rom splines
 ////
 //// Catmull-Rom splines are useful for paths of objects because they
-//// preserve velocity through points on the path. This implementation uses
-//// the ["centripetal" formulation](https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline)
+//// preserve velocity through points on the path and ensure that all
+//// points are passed through with exception of the first and last.
+//// This implementation uses the ["centripetal" formulation](https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline)
 //// that requires 4 control points, with the curve spanning the two central points.
 
 import matrix/mat4f.{type Mat4f}

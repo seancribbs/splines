@@ -1,14 +1,12 @@
-name: test
+name: Release to hex.pm
 
 on:
   push:
-    branches:
-      - master
-      - main
-  pull_request:
+    tags:
+      - "v*"
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +15,7 @@ jobs:
           otp-version: "28"
           gleam-version: "1.15.1"
           rebar3-version: "3"
-          # elixir-version: "1"
       - run: gleam deps download
-      - run: gleam test
-      - run: gleam format --check src test
+      - run: gleam publish --yes
+        env:
+          HEXPM_API_KEY: ${{ secrets.HEX_PM_KEY }}
